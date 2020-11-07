@@ -50,7 +50,7 @@ if (! function_exists('abort_if')) {
      * Throw an HttpException with the given data if the given condition is true.
      *
      * @param  bool  $boolean
-     * @param  int  $code
+     * @param  \Symfony\Component\HttpFoundation\Response|\Illuminate\Contracts\Support\Responsable|int  $code
      * @param  string  $message
      * @param  array  $headers
      * @return void
@@ -71,7 +71,7 @@ if (! function_exists('abort_unless')) {
      * Throw an HttpException with the given data unless the given condition is true.
      *
      * @param  bool  $boolean
-     * @param  int  $code
+     * @param  \Symfony\Component\HttpFoundation\Response|\Illuminate\Contracts\Support\Responsable|int  $code
      * @param  string  $message
      * @param  array  $headers
      * @return void
@@ -298,13 +298,13 @@ if (! function_exists('cookie')) {
      * @param  int  $minutes
      * @param  string|null  $path
      * @param  string|null  $domain
-     * @param  bool  $secure
+     * @param  bool|null  $secure
      * @param  bool  $httpOnly
      * @param  bool  $raw
      * @param  string|null  $sameSite
      * @return \Illuminate\Cookie\CookieJar|\Symfony\Component\HttpFoundation\Cookie
      */
-    function cookie($name = null, $value = null, $minutes = 0, $path = null, $domain = null, $secure = false, $httpOnly = true, $raw = false, $sameSite = null)
+    function cookie($name = null, $value = null, $minutes = 0, $path = null, $domain = null, $secure = null, $httpOnly = true, $raw = false, $sameSite = null)
     {
         $cookie = app(CookieFactory::class);
 
@@ -415,6 +415,8 @@ if (! function_exists('elixir')) {
      * @return string
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated Use Laravel Mix instead.
      */
     function elixir($file, $buildDirectory = 'build')
     {
