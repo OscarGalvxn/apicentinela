@@ -6,7 +6,7 @@ use App\Cliente;
 class JwtAuth{
     public $key;
     public function __construct(){
-$this->key ='RubenBebeHemorso';
+$this->key ='RubenBebe';
     }
 
 public function signup($email, $password,$getToken=null){
